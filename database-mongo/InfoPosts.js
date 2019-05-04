@@ -5,7 +5,6 @@ const BossList = require('./bossList.js');
 const PriceInfo = require('./priceInfo.js');
 let postsString = require('./postsString.js');
 const cities = require('cities.json');
-const cities2 = require('all-the-cities');
 
 const arr = postsString.split('--');
 
@@ -78,7 +77,6 @@ const includePriceAndCoordinates = (PriceInfo, posts) => {
         reject(err);
       });
   });
-  
 };
 
 let completePostInfo = includePriceAndCoordinates(PriceInfo, posts);

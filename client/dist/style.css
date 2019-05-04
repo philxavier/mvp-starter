@@ -168,3 +168,22 @@ input::-webkit-input-placeholder {
 .grow:hover { 
     transform: scale(3.0); 
 }
+
+#imgContainer {
+    /* display:inline;
+    width: 120px;
+    float:left */
+  
+}
+
+#cardContainer {
+    display:inline;
+    width: 120px;
+}
+
+#consulateImg {
+
+position: absolute;
+z-index: 1
+
+}

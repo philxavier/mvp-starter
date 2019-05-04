@@ -65,6 +65,7 @@ class SimpleMap extends Component {
                       cost={ele.cost} 
                       bost={ele.boss}
                       />
+            
             } else {
               return <TemplateEmbassy
                       key={ind} 

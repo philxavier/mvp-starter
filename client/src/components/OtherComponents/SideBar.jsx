@@ -22,25 +22,25 @@ class SideBar extends Component {
           <h4 id="categoriaTitle">Categoria do Posto</h4>
           <div id="containerButtonSwitch">
             <div id="containerSwitch">
-              <SwitchExample textValue={'A'} handleSwitchClassChange={this.props.handleSwitchClassChange}/>
+              <SwitchExample textValue={'a'} handleSwitchClassChange={this.props.handleSwitchClassChange}/>
             </div>
               <Button textValue = 'A' />
           </div>
           <div id="containerButtonSwitch">
             <div id="containerSwitch">
-              <SwitchExample textValue={'B'} handleSwitchClassChange={this.props.handleSwitchClassChange} />
+              <SwitchExample textValue={'b'} handleSwitchClassChange={this.props.handleSwitchClassChange} />
             </div>
               <Button textValue = 'B' />
           </div>
           <div id="containerButtonSwitch">
             <div id="containerSwitch">
-              <SwitchExample textValue={'C'} handleSwitchClassChange={this.props.handleSwitchClassChange}/>
+              <SwitchExample textValue={'c'} handleSwitchClassChange={this.props.handleSwitchClassChange}/>
             </div>
               <Button textValue = 'C' />
           </div>
           <div id="containerButtonSwitch">
             <div id="containerSwitch">
-              <SwitchExample textValue={'D'} handleSwitchClassChange={this.props.handleSwitchClassChange} />
+              <SwitchExample textValue={'d'} handleSwitchClassChange={this.props.handleSwitchClassChange} />
             </div>
               <Button textValue = 'D' />
           </div>

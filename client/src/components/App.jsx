@@ -35,13 +35,31 @@ export default class App extends Component {
 
   }
 
-  render() {
+  handleTypeChange(inutType) {
+     //let's see if that class of post is inside this.state.classOfPost
+    //if it is, let's remove it, if not, let's include it 
+    let newTypeofPost = this.state.newTypeofPost.slice();
 
+    if (newTypeofPost.includes(inputType)) {
+      let indexOfInput = newTypeofPost.indexOf(inputTy[e]);
+      newTypeofPost.splice(indexOfInput, 1);
+    } else {
+      newTypeofPost.push(inputType);
+    }
+    
+    this.setState({
+      classOfPost: newTypeofPost
+    })
+
+  }
+
+  render() {
+    let { classOfPost } = this.state;
     return (
       <div id="container">
         <SearchBar />
         <SideBar handleSwitchClassChange={this.handleSwitchClassChange}/>
-        <SimpleMap />
+        <SimpleMap classOfPost={classOfPost} />
         {/* <MapContainer /> */}
       </div>
     )

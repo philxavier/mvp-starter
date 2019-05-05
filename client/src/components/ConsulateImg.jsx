@@ -51,9 +51,9 @@ export default class consulateImg extends Component {
   }
 
   render() {
-    let {src, image, nameOfCity, boss, cost, classP} = this.props
+    let {src, nameOfCity, boss, cost, classPost} = this.props
     // console.log('this is src', src)
-
+    console.log('this is src', src)
     return (
       <div>
         <div id="imgContainer" 
@@ -62,7 +62,7 @@ export default class consulateImg extends Component {
              onMouseLeave = {this.handleMouseLeave}
         >
         
-        {this.state.placeHolder ? <ModalComponent src={src} nameOfCity={nameOfCity} boss={boss} cost={cost} classP={classP}handleMouseLeave={this.handleMouseLeave}/> : null}
+        {this.state.placeHolder ? <ModalComponent src={src} nameOfCity={nameOfCity} boss={boss} cost={cost} classPost={classPost}handleMouseLeave={this.handleMouseLeave}/> : null}
           <img id="consulateImg" onClick={this.handleClick} 
                src="https://s3-us-west-1.amazonaws.com/mvp-sprint/Consulate.png" 
                alt="" 

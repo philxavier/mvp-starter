@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
 import google_api from '../../../google_api.js';
-import ListOfConsulates from  '../../../listOfConsulates.js';
 import TemplateConsulate from './TemplateConsulate.jsx';
 import ListOfEmbassies from '../../../listOfEmbassies.js';
 import TemplateEmbassy from './TemplateEmbassy.jsx';
-import Test from './OtherComponents/Test.jsx';
 import Axios from 'axios';
 
 class SimpleMap extends Component {
@@ -13,7 +11,8 @@ class SimpleMap extends Component {
   constructor(props) {
     super(props) 
     this.state = {
-      postInfo: [],
+      fullListOfPosts: [],
+      filteredListOfPosts:[]
     }
   }
 
@@ -22,9 +21,7 @@ class SimpleMap extends Component {
       lat: 59.95,
       lng: 30.33,
     },
-
     zoom: 0,
-
     listOfEmbassies: ListOfEmbassies
 
   };
@@ -33,25 +30,30 @@ class SimpleMap extends Component {
 
     Axios.get('/posts')
       .then((result) => {
-        console.log('results are here', result)
-        this.setState({
-          postInfo: result.data
+        console.log('these are the results', result)
+          this.setState({
+            fullListOfPosts:result.data
+          })
         })
-      })
       .catch((err) => {
         console.log('there was an error in component did mount', err)
       })
   }
 
-  filterByType() {
-
-  }
-
-  filterByClass() {
-
-  }
-
-  filterByCost() {
+  componentDidUpdate(prevProps) {
+    //if props are modified, lets filter the full list of posts and make into filtered list of posts so it can be rendered
+    if(prevProps !== this.props) {
+      let filters = this.props.classOfPost;
+      let filteredArray = this.state.fullListOfPosts.slice();
+      
+      filteredArray = filteredArray.filter((ele) => {
+        return filters.includes(ele.class);
+      })
+      console.log(filteredArray)
+      this.setState({
+        filteredListOfPosts:filteredArray
+      })
+    }
     
   }
 
@@ -66,11 +68,12 @@ class SimpleMap extends Component {
           defaultZoom={this.props.zoom}
         >
 
-          {this.state.postInfo.map((ele, ind) => {
+          {this.state.filteredListOfPosts.map((ele, ind) => {
+            console.log(ele)
             if (ele.type !== "e") {
               return <TemplateConsulate 
                       key={ind} 
-                      name={ele.name} 
+                      nameOfCity={ele.name} 
                       lat={ele.lat} 
                       lng={ele.lng} 
                       classPost={ele.class} 
@@ -81,10 +84,10 @@ class SimpleMap extends Component {
             } else {
               return <TemplateEmbassy
                       key={ind} 
-                      name={ele.name} 
+                      nameOfCity={ele.name} 
                       lat={ele.lat} 
                       lng={ele.lng} 
-                      category={ele.cat} 
+                      classPost={ele.class} 
                       cost={ele.cost} 
                       bost={ele.boss}
                       />

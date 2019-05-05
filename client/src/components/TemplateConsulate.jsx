@@ -1,32 +1,24 @@
 import React, { Component } from 'react'
 import { Button, Header, Icon, Image, Modal } from 'semantic-ui-react'
 import ConsulateImg from './ConsulateImg.jsx';
-import { Card} from 'semantic-ui-react';
-
-
 
 export default class TemplateConsulate extends Component {
 
   constructor(props) {
         super(props)
-        this.state = {
-          renderCard: false,
-          card: false,
-          classP: this.props.classP,
-          nameOfCity:  this.props.name,
-          boss: this.props.boss,
-          cost: this.props.cost,
-          src: `https://s3-us-west-1.amazonaws.com/mvp-sprint/${this.props.name}.jpg`
-        }
+          
         
         
+        this.src =`https://s3-us-west-1.amazonaws.com/mvp-sprint/${this.props.nameOfCity}.jpg`
   }
+        
+  
 
   render() {
-    let { src, classP, nameOfCity, boss, cost} = this.state;
+    let {classPost, nameOfCity, boss, cost} = this.props;
     return (
       <div> 
-         <ConsulateImg nameOfCity={nameOfCity} classP={classP} boss={boss} cost={cost} src={src}/>
+         <ConsulateImg nameOfCity={nameOfCity} classPost={classPost} boss={boss} cost={cost} src={this.src}/>
       </div>
     )
   }

@@ -24,7 +24,6 @@ export default class TemplateConsulate extends Component {
 
   render() {
     let { src, classP, nameOfCity, boss, cost} = this.state;
-    console.log('this is src', src)
     return (
       <div> 
          <ConsulateImg nameOfCity={nameOfCity} classP={classP} boss={boss} cost={cost} src={src}/>

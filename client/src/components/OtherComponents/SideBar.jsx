@@ -22,25 +22,25 @@ class SideBar extends Component {
           <h4 id="categoriaTitle">Categoria do Posto</h4>
           <div id="containerButtonSwitch">
             <div id="containerSwitch">
-              <SwitchExample />
+              <SwitchExample textValue={'A'} handleSwitchClassChange={this.props.handleSwitchClassChange}/>
             </div>
               <Button textValue = 'A' />
           </div>
           <div id="containerButtonSwitch">
             <div id="containerSwitch">
-              <SwitchExample />
+              <SwitchExample textValue={'B'} handleSwitchClassChange={this.props.handleSwitchClassChange} />
             </div>
               <Button textValue = 'B' />
           </div>
           <div id="containerButtonSwitch">
             <div id="containerSwitch">
-              <SwitchExample />
+              <SwitchExample textValue={'C'} handleSwitchClassChange={this.props.handleSwitchClassChange}/>
             </div>
               <Button textValue = 'C' />
           </div>
           <div id="containerButtonSwitch">
             <div id="containerSwitch">
-              <SwitchExample />
+              <SwitchExample textValue={'D'} handleSwitchClassChange={this.props.handleSwitchClassChange} />
             </div>
               <Button textValue = 'D' />
           </div>
@@ -49,6 +49,10 @@ class SideBar extends Component {
     );
   }
 }
+
+// SideBar.protoTypes = {
+//   callback : PropTypes.func,
+// }
 
 //We need to export to index.js to display
 export default SideBar;

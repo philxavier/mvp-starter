@@ -43,6 +43,18 @@ class SimpleMap extends Component {
       })
   }
 
+  filterByType() {
+
+  }
+
+  filterByClass() {
+
+  }
+
+  filterByCost() {
+    
+  }
+
   render() {
     return (
       // Important! Always set the container height explicitly

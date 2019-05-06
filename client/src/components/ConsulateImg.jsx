@@ -52,8 +52,6 @@ export default class consulateImg extends Component {
 
   render() {
     let {src, nameOfCity, boss, cost, classPost} = this.props
-    // console.log('this is src', src)
-    console.log('this is src', src)
     return (
       <div>
         <div id="imgContainer" 

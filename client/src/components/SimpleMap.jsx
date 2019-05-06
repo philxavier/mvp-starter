@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
 import google_api from '../../../google_api.js';
 import TemplateConsulate from './TemplateConsulate.jsx';
-import ListOfEmbassies from '../../../listOfEmbassies.js';
 import TemplateEmbassy from './TemplateEmbassy.jsx';
+import TemplateMission from './TemplateMission.jsx';
 import Axios from 'axios';
 
 class SimpleMap extends Component {
@@ -22,7 +22,6 @@ class SimpleMap extends Component {
       lng: 30.33,
     },
     zoom: 0,
-    listOfEmbassies: ListOfEmbassies
 
   };
 
@@ -69,9 +68,9 @@ class SimpleMap extends Component {
         >
 
           {this.state.filteredListOfPosts.map((ele, ind) => {
-            console.log(ele)
-            if (ele.type !== "e") {
+            if (ele.type.includes('c')) {
               return <TemplateConsulate 
+                      src={`https://s3-us-west-1.amazonaws.com/mvp-sprint/${ele.name}.jpg`}
                       key={ind} 
                       nameOfCity={ele.name} 
                       lat={ele.lat} 
@@ -81,8 +80,21 @@ class SimpleMap extends Component {
                       bost={ele.boss}
                       />
             
-            } else {
+            } else if(ele.type === "e") {
               return <TemplateEmbassy
+                      src={`https://s3-us-west-1.amazonaws.com/mvp-sprint/${ele.name}.jpg`}
+                      key={ind} 
+                      nameOfCity={ele.name} 
+                      lat={ele.lat} 
+                      lng={ele.lng} 
+                      classPost={ele.class} 
+                      cost={ele.cost} 
+                      bost={ele.boss}
+                      />
+            } else if(ele.type ==="m") {
+              
+              return <TemplateMission
+                      src={`https://s3-us-west-1.amazonaws.com/mvp-sprint/${ele.name}.jpg`}
                       key={ind} 
                       nameOfCity={ele.name} 
                       lat={ele.lat} 

@@ -11,7 +11,7 @@ export default class SearchBar extends Component {
             color= "rgb(233, 82, 13)"
             size="40"
           />
-          <h4 id="text-logo">Removedor</h4>
+          <h4 id="text-logo">Pick an Assignment</h4>
         </div>
         <div id="inputBar">
           <Input size = "large" icon={<Icon name='search' inverted circular link />} placeholder='Search...' />  

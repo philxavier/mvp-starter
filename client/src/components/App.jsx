@@ -2,24 +2,27 @@ import React, { Component } from 'react';
 import SimpleMap from './SimpleMap.jsx';
 import SearchBar from './OtherComponents/SearchBar.jsx';
 import SideBar from '../components/OtherComponents/SideBar.jsx'
-
 export default class App extends Component {
 
   
   constructor(props) {
     super(props)
     this.state = {
-      classOfPost:[],
-      type:[]
+      filters:{
+        classOfPost:[],
+        type:[]
+      },
+      
     }
 
     this.handleSwitchClassChange = this.handleSwitchClassChange.bind(this)
+    this.handleTypeChange=this.handleTypeChange.bind(this);
   }
 
   handleSwitchClassChange(inputClassOfPost) {
-    //let's see if that class of post is inside this.state.classOfPost
+    //let's see if that class of post is inside this.state.filters.classOfPost
     //if it is, let's remove it, if not, let's include it 
-    let newClassOfPost = this.state.classOfPost.slice();
+    let newClassOfPost = this.state.filters.classOfPost.slice();
 
     if (newClassOfPost.includes(inputClassOfPost)) {
       let indexOfInput = newClassOfPost.indexOf(inputClassOfPost);
@@ -27,38 +30,48 @@ export default class App extends Component {
     } else {
       newClassOfPost.push(inputClassOfPost);
     }
+
+    console.log('this is newclasofpost', newClassOfPost)
     
     this.setState({
-      classOfPost: newClassOfPost
+      filters: {
+        classOfPost: newClassOfPost,
+        type: this.state.filters.type
+      }
     })
 
   }
 
-  handleTypeChange(inutType) {
-     //let's see if that class of post is inside this.state.classOfPost
+  handleTypeChange(inputType) {
+    //let's see if that class of post is inside this.state.filters.type
     //if it is, let's remove it, if not, let's include it 
-    let newTypeofPost = this.state.newTypeofPost.slice();
 
-    if (newTypeofPost.includes(inputType)) {
-      let indexOfInput = newTypeofPost.indexOf(inputTy[e]);
-      newTypeofPost.splice(indexOfInput, 1);
+    let newTypeOfPost = this.state.filters.type.slice();
+
+    if (newTypeOfPost.includes(inputType)) {
+      let indexOfInput = newTypeOfPost.indexOf(inputType);
+      newTypeOfPost.splice(indexOfInput, 1);
     } else {
-      newTypeofPost.push(inputType);
+      newTypeOfPost.push(inputType);
     }
+
+    console.log(newTypeOfPost)
     
     this.setState({
-      classOfPost: newTypeofPost
+      filters:{
+        type: newTypeOfPost,
+        classOfPost: this.state.filters.classOfPost
+      }
     })
-
   }
 
   render() {
-    let { classOfPost } = this.state;
+    let { classOfPost, type } = this.state.filters;
     return (
       <div id="container">
         <SearchBar />
-        <SideBar handleSwitchClassChange={this.handleSwitchClassChange}/>
-        <SimpleMap classOfPost={classOfPost} />
+        <SideBar handleSwitchClassChange={this.handleSwitchClassChange} handleTypeChange={this.handleTypeChange}/>
+        <SimpleMap type={type} classOfPost={classOfPost} />
         {/* <MapContainer /> */}
       </div>
     )

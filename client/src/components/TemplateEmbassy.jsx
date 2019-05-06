@@ -9,14 +9,14 @@ export default class TemplateEmbassy extends Component {
         this.state = {   
         }
         
-        this.src = `https://s3-us-west-1.amazonaws.com/mvp-sprint/${this.props.nameOfCity}.jpg`
+        // this.src = `https://s3-us-west-1.amazonaws.com/mvp-sprint/${this.props.nameOfCity}.jpg`
   }
 
   render() {
-    let {classPost, nameOfCity, boss, cost} = this.props;
+    let {classPost, src, nameOfCity, boss, cost} = this.props;
     return (
       <div> 
-         <EmbassyImg nameOfCity={nameOfCity} classPost={classPost} boss={boss} cost={cost} src={this.src}/>
+         <EmbassyImg nameOfCity={nameOfCity} classPost={classPost} boss={boss} cost={cost} src={src}/>
       </div>
     )
   }

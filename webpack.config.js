@@ -33,5 +33,10 @@ module.exports = {
       }
     ]
   },
+  // plugins: [
+  //   new LodashModuleReplacementPlugin({
+  //     collections: true
+  //   })
+  // ]
  
 }

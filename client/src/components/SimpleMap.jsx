@@ -5,6 +5,8 @@ import TemplateConsulate from './TemplateConsulate.jsx';
 import TemplateEmbassy from './TemplateEmbassy.jsx';
 import TemplateMission from './TemplateMission.jsx';
 import Axios from 'axios';
+import _ from 'underscore'
+
 
 class SimpleMap extends Component {
 
@@ -42,15 +44,58 @@ class SimpleMap extends Component {
   componentDidUpdate(prevProps) {
     //if props are modified, lets filter the full list of posts and make into filtered list of posts so it can be rendered
     if(prevProps !== this.props) {
-      let filters = this.props.classOfPost;
+      let filterOfClass = this.props.classOfPost;
+      let filterOfType = this.props.type
+      console.log('filterofClass', filterOfClass)
+      console.log('filterOfType', filterOfType)
       let filteredArray = this.state.fullListOfPosts.slice();
-      
-      filteredArray = filteredArray.filter((ele) => {
-        return filters.includes(ele.class);
-      })
-      console.log(filteredArray)
+
+      let filterByClass = (listOfPosts) => {
+        return listOfPosts.filter((ele) => {
+          return filterOfClass.includes(ele.class);
+        })
+      }
+
+      let filterByType = (listOfPosts) => {
+        let result = [];
+        for (let i = 0; i < listOfPosts.length; i++) {
+          if (listOfPosts[i].type === 'cg' || listOfPosts[i].type === 'vc' || listOfPosts[i].type === 'c') {
+            if (filterOfType.includes('c')) {
+              result.push(listOfPosts[i]);
+            }
+          } else if (listOfPosts[i].type === 'e') {
+            if (filterOfType.includes('e')) {
+              result.push(listOfPosts[i]);
+            }
+          } else {
+            if(filterOfType.includes('o')) {
+              result.push(listOfPosts[i]);
+            }
+          }
+        }
+        return result;
+      }
+
+      let filteredByType = filterByType(filteredArray);
+      let filteredByClass = filterByClass(filteredArray);
+
+
+      var resultArray=[];
+
+      if (!filteredByClass.length || !filteredByType.length) {
+        resultArray = _.union(filteredByClass, filteredByType);
+      } else {
+        resultArray = _.intersection(filteredByType, filteredByClass)
+      }
+
+      // console.log('this is filteredbytype', filteredByType);
+
+      // console.log('this is filteredbyclass', filteredByClass);
+
+      // console.log('this is final array', resultArray) ;
+     
       this.setState({
-        filteredListOfPosts:filteredArray
+        filteredListOfPosts:resultArray
       })
     }
     
@@ -91,8 +136,7 @@ class SimpleMap extends Component {
                       cost={ele.cost} 
                       bost={ele.boss}
                       />
-            } else if(ele.type ==="m") {
-              
+            } else {
               return <TemplateMission
                       src={`https://s3-us-west-1.amazonaws.com/mvp-sprint/${ele.name}.jpg`}
                       key={ind} 

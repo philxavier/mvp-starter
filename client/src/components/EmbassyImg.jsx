@@ -25,7 +25,7 @@ const ModalComponent = (props) => (
   
 )
 
-export default class consulateImg extends Component {
+export default class EmbassyImg extends Component {
   constructor(props) {
     super(props) 
     this.state={

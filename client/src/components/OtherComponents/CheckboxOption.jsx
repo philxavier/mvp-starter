@@ -6,11 +6,20 @@ export default class CheckboxOption extends Component {
     super(props)
   }
 
+  handleChange(postReference) {
+    let firstLetter = postReference[0].toLowerCase();
+    this.props.handleTypeChange(firstLetter)
+  }
+
   render() {
     return (
       <div className="checkBoxContainer">
         <li className="radioClass">
-          <input id="checkbox" type="checkbox" style={{marginRight: "6px"}}/>
+          <input 
+            id="checkbox" type="checkbox" 
+            onChange={() =>{this.handleChange(this.props.typeOfPost)}} 
+            style={{marginRight: "6px"}}
+          />
           <label>{this.props.typeOfPost}</label>
         </li>
       </div>

@@ -49,7 +49,7 @@ class SideBar extends Component {
             <h4 id="typeOfPost">Type of Post</h4>
               <ul>
                 {this.state.typeOfPost.map((ele, ind) => {
-                  return <CheckboxOption key={ind} typeOfPost={ele}/>
+                  return <CheckboxOption handleTypeChange={this.props.handleTypeChange} key={ind} typeOfPost={ele}/>
                 })} 
               </ul>
           </div>

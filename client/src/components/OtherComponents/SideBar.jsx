@@ -57,7 +57,7 @@ class SideBar extends Component {
         </div>
         <div className="bossReview">
           <h4 id="bossReview">Boss Review</h4>
-          <div id="paymentContainer" name="paymentContainer" className="paymentOptions">
+          <div id="boxContainers" name="paymentContainer" className="paymentOptions">
                 {this.state.bossRatings.map((ele, ind) => {
                   return <div key={ind} id="optionsWrapper" className="floatBlock">
                           <label id="labelWrapper"> 

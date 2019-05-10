@@ -122,7 +122,7 @@ class SimpleMap extends Component {
                       lng={ele.lng} 
                       classPost={ele.class} 
                       cost={ele.cost} 
-                      bost={ele.boss}
+                      boss={ele.boss}
                       />
             
             } else if(ele.type === "e") {
@@ -134,7 +134,7 @@ class SimpleMap extends Component {
                       lng={ele.lng} 
                       classPost={ele.class} 
                       cost={ele.cost} 
-                      bost={ele.boss}
+                      boss={ele.boss}
                       />
             } else {
               return <TemplateMission
@@ -145,7 +145,7 @@ class SimpleMap extends Component {
                       lng={ele.lng} 
                       classPost={ele.class} 
                       cost={ele.cost} 
-                      bost={ele.boss}
+                      boss={ele.boss}
                       />
             }
           })}

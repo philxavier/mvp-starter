@@ -45,14 +45,17 @@ class SideBar extends Component {
             </div>
               <Button textValue = 'D' />
           </div>
-          <div className="wrapper">
-            <h4 id="typeOfPost">Type of Post</h4>
-              <ul>
-                {this.state.typeOfPost.map((ele, ind) => {
-                  return <CheckboxOption handleTypeChange={this.props.handleTypeChange} key={ind} typeOfPost={ele}/>
-                })} 
-              </ul>
-          </div>
+        </div>
+        <div className="wrapper">
+          <h4 id="typeOfPost">Type of Post</h4>
+            <ul>
+              {this.state.typeOfPost.map((ele, ind) => {
+                return <CheckboxOption handleTypeChange={this.props.handleTypeChange} key={ind} typeOfPost={ele}/>
+              })} 
+            </ul>
+        </div>
+        <div className="bossReview">
+          <h4 id="bossReview">Boss Review</h4>
         </div>
       </div>
     );

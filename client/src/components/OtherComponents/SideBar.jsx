@@ -8,7 +8,8 @@ class SideBar extends Component {
   constructor(props) {
     super(props);
     this.state = { 
-      typeOfPost:['Embassy', 'Consulate', 'Other']
+      typeOfPost:['Embassy', 'Consulate', 'Other'],
+      bossRatings:["A", "B", "C", "D", "E", "F"]
     };
   }
 
@@ -48,14 +49,27 @@ class SideBar extends Component {
         </div>
         <div className="wrapper">
           <h4 id="typeOfPost">Type of Post</h4>
-            <ul>
-              {this.state.typeOfPost.map((ele, ind) => {
-                return <CheckboxOption handleTypeChange={this.props.handleTypeChange} key={ind} typeOfPost={ele}/>
-              })} 
-            </ul>
+          <ul>
+            {this.state.typeOfPost.map((ele, ind) => {
+              return <CheckboxOption handleTypeChange={this.props.handleTypeChange} key={ind} typeOfPost={ele}/>
+            })} 
+          </ul>
         </div>
         <div className="bossReview">
           <h4 id="bossReview">Boss Review</h4>
+          <div id="paymentContainer" name="paymentContainer" className="paymentOptions">
+                {this.state.bossRatings.map((ele, ind) => {
+                  return <div key={ind} id="optionsWrapper" className="floatBlock">
+                          <label id="labelWrapper"> 
+                              <input id="bossOption"
+                                name="paymentType" 
+                                type="checkbox" 
+                              />  
+                                <span>{ele}</span>
+                           </label>
+                          </div>
+                })}
+          </div>
         </div>
       </div>
     );

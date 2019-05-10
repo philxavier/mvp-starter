@@ -21,9 +21,6 @@ const ModalComponent = (props) => (
           src={props.src} 
           bordered={true}
         />
-        <div style={{width:"97%%", height: "100%", marginLeft:"1px", marginRight:"1px"}}>
-        
-        </div>
       </div>
       <Modal.Description>
           <div style={{

@@ -219,11 +219,37 @@ z-index: 1
     padding: 2px 5px;
 }
 
-.bossReview {
-    margin-top:3%
-}
-
 #bossReview {
+    margin-top:4%;
     color: white;
     font-family: 'Cinzel', serif
+}
+
+#optionsContainer {
+    color: white;
+    font-family: 'Cinzel', serif
+}
+
+#optionsWrapper {
+    display: inline-flex;
+    margin: 1px;
+    text-align: center;
+}
+
+#bossOption {
+    padding:20px;
+    margin-left:6px;
+}
+
+#labelWrapper {
+    margin-bottom:5px
+}
+
+span {
+    position:relative;
+    bottom:5%;
+    margin-left:5%;
+    color: white;
+    font-family: 'Cinzel', serif
+    
 }

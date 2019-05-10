@@ -53,6 +53,8 @@ const ModalComponent = (props) => (
               <li>The Local Purchase Power Index of {props.nameOfCity} is <b>{props.cost.localPurchasePowerIndex}</b></li>
             </ul>
             }
+            <h4>Boss Review</h4> 
+
           </div>
           
       </div>     

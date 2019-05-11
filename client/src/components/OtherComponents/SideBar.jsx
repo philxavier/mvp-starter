@@ -2,6 +2,7 @@ import React, { Component } from 'react'; //Always need in JSX files
 import SwitchExample from "./Switch.jsx";
 import Button from "./Button.jsx"
 import CheckboxOption from './CheckboxOption.jsx'
+import CheckboxForBoss from './CheckboxForBoss.jsx'
 
 // Create the HTML to return for the input
 class SideBar extends Component {
@@ -59,15 +60,7 @@ class SideBar extends Component {
           <h4 id="bossReview">Boss Review</h4>
           <div id="boxContainers" name="paymentContainer" className="paymentOptions">
                 {this.state.bossRatings.map((ele, ind) => {
-                  return <div key={ind} id="optionsWrapper" className="floatBlock">
-                          <label id="labelWrapper"> 
-                              <input id="bossOption"
-                                name="paymentType" 
-                                type="checkbox" 
-                              />  
-                                <span>{ele}</span>
-                           </label>
-                          </div>
+                  return <CheckboxForBoss key = {ind} rate={ele} handleBossRateChange={this.props.handleBossRateChange} />
                 })}
           </div>
         </div>

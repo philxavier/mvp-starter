@@ -45,9 +45,17 @@ class SimpleMap extends Component {
     //if props are modified, lets filter the full list of posts and make into filtered list of posts so it can be rendered
     if(prevProps !== this.props) {
       let filterOfClass = this.props.classOfPost;
-      let filterOfType = this.props.type
-      console.log('filterofClass', filterOfClass)
-      console.log('filterOfType', filterOfType)
+      let filterOfType = this.props.type;
+      let filterOfRates = this.props.currentRates;
+
+      filterOfClass === undefined ? [] : filterOfClass;
+      filterOfType === undefined ? [] : filterOfType;
+      filterOfRates === undefined ? [] : filterByRates;
+
+      console.log('of class', filterOfClass)
+      console.log('of type', filterOfType)
+      console.log('of rates', filterOfRates);
+
       let filteredArray = this.state.fullListOfPosts.slice();
 
       let filterByClass = (listOfPosts) => {
@@ -76,16 +84,23 @@ class SimpleMap extends Component {
         return result;
       }
 
+      let filterByRates = (listOfPosts) => {
+        return listOfPosts.filter((ele) => {
+          return filterOfRates.includes(ele.boss[1]);
+        })
+      }
+
       let filteredByType = filterByType(filteredArray);
       let filteredByClass = filterByClass(filteredArray);
+      let filteredByRates = filterByRates(filteredArray)
 
 
       var resultArray=[];
 
-      if (!filteredByClass.length || !filteredByType.length) {
+      if (!filteredByClass.length || !filteredByType.length || filteredByRates.length) {
         resultArray = _.union(filteredByClass, filteredByType);
       } else {
-        resultArray = _.intersection(filteredByType, filteredByClass)
+        resultArray = _.intersection(filteredByType, filteredByClass, filteredByRates)
       }
 
       // console.log('this is filteredbytype', filteredByType);

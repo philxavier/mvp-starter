@@ -42,10 +42,40 @@ function mergeArrays() {
   return _.intersection(...args)
 }
 
+let buildNewClassOfPost = (newClassOfPost, inputClassOfPost) => {
+  if (newClassOfPost.includes(inputClassOfPost)) {
+    let indexOfInput = newClassOfPost.indexOf(inputClassOfPost);
+    newClassOfPost.splice(indexOfInput, 1);
+  } else {
+    newClassOfPost.push(inputClassOfPost);
+  }
+}
+
+let buildNewTypeOfPost = (newTypeOfPost, inputType) => {
+  if (newTypeOfPost.includes(inputType)) {
+    let indexOfInput = newTypeOfPost.indexOf(inputType);
+    newTypeOfPost.splice(indexOfInput, 1);
+  } else {
+    newTypeOfPost.push(inputType);
+  }
+}
+
+let buildNewRates = (newRatesArr, inputRate) => {
+  if(newRatesArr.includes(inputRate)) {
+    let indexOfRate = newRatesArr.indexOf(inputRate);
+    newRatesArr.splice(indexOfRate, 1);
+  } else {
+    newRatesArr.push(inputRate);
+  }
+}
+
 
   module.exports = {
       filterByClass,
       filterByRates,
       filterByType,
-      mergeArrays
+      mergeArrays,
+      buildNewClassOfPost,
+      buildNewTypeOfPost,
+      buildNewRates
   }

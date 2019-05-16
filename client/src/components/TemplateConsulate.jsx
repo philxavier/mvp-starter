@@ -4,15 +4,14 @@ import ConsulateImg from './ConsulateImg.jsx';
 export default class TemplateConsulate extends Component {
 
   constructor(props) {
-        super(props)
-         
+        super(props) 
   }
         
   render() {
-    let {classPost, nameOfCity, boss, cost, src} = this.props;
+    let {classPost, nameOfCity, boss, cost, src, photos} = this.props;
     return (
       <div> 
-         <ConsulateImg nameOfCity={nameOfCity} classPost={classPost} boss={boss} cost={cost} src={src}/>
+         <ConsulateImg photos={photos} nameOfCity={nameOfCity} classPost={classPost} boss={boss} cost={cost} src={src}/>
       </div>
     )
   }

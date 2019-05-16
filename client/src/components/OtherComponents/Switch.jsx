@@ -9,21 +9,19 @@ class SwitchExample extends Component {
   }
  
   handleChange(checked) {
-
     this.props.handleSwitchClassChange(this.props.textValue)
     this.setState({ checked });
-    
   }
  
   render() {
     return (
       <label>
         <Switch 
-        height={20}
-        width={50}
-        onChange={this.handleChange} 
-        checked={this.state.checked} 
-        onColor="#E9520D"
+          height={20}
+          width={50}
+          onChange={this.handleChange} 
+          checked={this.state.checked} 
+          onColor="#E9520D"
         />
       </label>
     );

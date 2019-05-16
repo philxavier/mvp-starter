@@ -29,7 +29,7 @@ const postSchema = mongoose.Schema({
   },
   lat: Number,
   lng: Number
-});
+}, { strict: false });
 
 
 const postModel = mongoose.model('Post', postSchema);

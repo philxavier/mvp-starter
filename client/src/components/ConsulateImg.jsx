@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Image, Popup } from 'semantic-ui-react'
 import { Header,  Modal } from 'semantic-ui-react'
 import { Divider } from 'semantic-ui-react'
-
+import Gallery from 'react-grid-gallery';
 
 const PlaceHolder = ({...rest }) => (
   <div style={{width:"22px", height:"27px", position:"absolute", zIndex:"2"}}{...rest }></div>
@@ -11,17 +11,24 @@ const PlaceHolder = ({...rest }) => (
 const ModalComponent = (props) => (
    
   <Modal onClose={() => {props.handleMouseLeave()}} trigger={<PlaceHolder />}closeIcon>
-  <Modal.Header>Select a Photo</Modal.Header>
+  <Modal.Header>Consulate of Brazil in {props.nameOfCity}</Modal.Header>
   <Modal.Content image>
     <div>
-      <Image 
-        wrapped size='medium' 
-        src={props.src} 
-        bordered="true"
-      />
+      <div style={{textAlign:"center"}}>
+        <Image 
+          wrapped size='medium' 
+          src={props.src} 
+          bordered={true}
+        />
+      </div>
        <Divider/>
+       <div>
+        <Gallery 
+          images={props.photos}
+          backdropClosesModal={true}
+        />
+       </div>
     </div>
-   
     <Modal.Description>
         <div style={{
           borderLeft: "solid 0.2px", 
@@ -33,7 +40,7 @@ const ModalComponent = (props) => (
           marginLeft:"10px"}}
         >
           <div style={{marginLeft:"12px"}}>
-            <Header>Consulate of Brazil in {props.nameOfCity}</Header>
+            <Header>General Description</Header>
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dictumst vestibulum rhoncus est pellentesque elit ullamcorper. Vitae purus faucibus ornare suspendisse sed nisi lacus. Arcu felis bibendum ut tristique et egestas quis. Donec ultrices tincidunt arcu non sodales. Risus commodo viverra maecenas accumsan lacus vel facilisis. Fermentum dui faucibus in ornare. Suscipit adipiscing bibendum est ultricies integer quis auctor elit. Fames ac turpis egestas integer eget aliquet nibh. Sed adipiscing diam donec adipiscing tristique risus nec feugiat in. Integer malesuada nunc vel risus commodo viverra maecenas accumsan lacus. Mi proin sed libero enim sed faucibus turpis in. Fringilla phasellus faucibus scelerisque eleifend. Ullamcorper a lacus vestibulum sed arcu non odio euismod. Quis imperdiet massa tincidunt nunc.
             </p>
@@ -53,9 +60,7 @@ const ModalComponent = (props) => (
               <li>The Local Purchase Power Index of {props.nameOfCity} is <b>{props.cost.localPurchasePowerIndex}</b></li>
             </ul>
             }
-
           </div>
-          
       </div>     
     </Modal.Description>
   </Modal.Content>
@@ -77,9 +82,21 @@ export default class consulateImg extends Component {
 
 
   handleMouseEnter() {
-    this.setState({
-      placeHolder: !this.state.placeHolder
-    })
+
+    let result;
+
+    if (!this.state.placeHolder) {
+      result = true;
+    } else {
+      result = false;
+    }
+
+    if(result) {
+      this.setState({
+        placeHolder: result
+      })
+    }
+    
   }
 
   handleMouseLeave() {
@@ -89,16 +106,16 @@ export default class consulateImg extends Component {
   }
 
   render() {
-    let {src, nameOfCity, boss, cost, classPost} = this.props
+    let {src, nameOfCity, boss, cost, classPost, photos} = this.props
     return (
       <div>
         <div id="imgContainer" 
              className="consulateStyle grow" 
              onMouseEnter = {this.handleMouseEnter}
-             onMouseLeave = {this.handleMouseLeave}
+            //  onMouseLeave = {this.handleMouseLeave}
         >
         
-        {this.state.placeHolder ? <ModalComponent src={src} nameOfCity={nameOfCity} boss={boss} cost={cost} classPost={classPost}handleMouseLeave={this.handleMouseLeave}/> : null}
+        {this.state.placeHolder ? <ModalComponent photos={photos} src={src} nameOfCity={nameOfCity} boss={boss} cost={cost} classPost={classPost} handleMouseLeave={this.handleMouseLeave}/> : null}
           <img id="consulateImg" onClick={this.handleClick} 
                src="https://s3-us-west-1.amazonaws.com/mvp-sprint/Consulate.png" 
                alt="" 

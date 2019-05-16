@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import SimpleMap from './SimpleMap.jsx';
 import SearchBar from './OtherComponents/SearchBar.jsx';
 import SideBar from '../components/OtherComponents/SideBar.jsx'
+import HelperFuncs from '../../../HelperFuncs.js';
 
 export default class App extends Component {
 
@@ -26,13 +27,7 @@ export default class App extends Component {
     //if it is, let's remove it, if not, let's include it 
     let newClassOfPost = this.state.filters.classOfPost.slice();
 
-    if (newClassOfPost.includes(inputClassOfPost)) {
-      let indexOfInput = newClassOfPost.indexOf(inputClassOfPost);
-      newClassOfPost.splice(indexOfInput, 1);
-    } else {
-      newClassOfPost.push(inputClassOfPost);
-    }
-
+    HelperFuncs.buildNewClassOfPost(newClassOfPost, inputClassOfPost) 
     
     this.setState({
       filters: {
@@ -50,12 +45,7 @@ export default class App extends Component {
 
     let newTypeOfPost = this.state.filters.type.slice();
 
-    if (newTypeOfPost.includes(inputType)) {
-      let indexOfInput = newTypeOfPost.indexOf(inputType);
-      newTypeOfPost.splice(indexOfInput, 1);
-    } else {
-      newTypeOfPost.push(inputType);
-    }
+    HelperFuncs.buildNewTypeOfPost(newTypeOfPost, inputType);    
     
     this.setState({
       filters:{
@@ -70,13 +60,8 @@ export default class App extends Component {
     //let's filter the results based on the rates currently selected;
     let newRatesArr = this.state.filters.currentRates.slice();
 
-    if(newRatesArr.includes(inputRate)) {
-      let indexOfRate = newRatesArr.indexOf(inputRate);
-      newRatesArr.splice(indexOfRate, 1);
-    } else {
-      newRatesArr.push(inputRate);
-    }
-
+    HelperFuncs.buildNewRates(newRatesArr, inputRate)
+    
     this.setState({
       filters:{
         type: this.state.filters.type,

@@ -4,15 +4,14 @@ import MissionImg from './MissionImg.jsx';
 export default class TemplateMission extends Component {
 
   constructor(props) {
-        super(props)
-         
+        super(props)    
   }
         
   render() {
-    let {classPost, nameOfCity, boss, cost, src} = this.props;
+    let {classPost, photos, nameOfCity, boss, cost, src} = this.props;
     return (
       <div> 
-         <MissionImg nameOfCity={nameOfCity} classPost={classPost} boss={boss} cost={cost} src={src}/>
+         <MissionImg photos={photos} nameOfCity={nameOfCity} classPost={classPost} boss={boss} cost={cost} src={src}/>
       </div>
     )
   }

@@ -1,7 +1,7 @@
 /* eslint-disable linebreak-style */
 // eslint-disable-next-line import/no-extraneous-dependencies
 const mongoose = require('mongoose');
-var config = require('./mongo.config.js');
+var config = require('../mongo.config.js');
 
 mongoose
   //connecting to mongo atlas and choosing database

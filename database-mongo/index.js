@@ -1,8 +1,15 @@
 /* eslint-disable linebreak-style */
 // eslint-disable-next-line import/no-extraneous-dependencies
 const mongoose = require('mongoose');
+var config = require('./mongo.config.js');
 
-mongoose.connect('mongodb://localhost/mvp', { useNewUrlParser: true });
+mongoose
+  //connecting to mongo atlas and choosing database
+  .connect(config.URI, { dbName: 'mvp' })
+  .then(() => {
+    console.log('Connection to the Atlas Cluster is successful!');
+  })
+  .catch(err => console.error(err));
 
 const db = mongoose.connection;
 
@@ -14,26 +21,27 @@ db.once('open', () => {
   console.log('mongoose connected successfully');
 });
 
-const postSchema = mongoose.Schema({
-  name: String,
-  class: String,
-  type: String,
-  boss: Array,
-  cost: {
-    costOfLivingIndex: Number,
-    rentIndex: Number,
-    costOfLivingPlusIndex: Number,
-    groceriesIndex: Number,
-    restaurantPriceIndex: Number,
-    localPurchasePowerIndex: Number
+const postSchema = mongoose.Schema(
+  {
+    name: String,
+    class: String,
+    type: String,
+    boss: Array,
+    cost: {
+      costOfLivingIndex: Number,
+      rentIndex: Number,
+      costOfLivingPlusIndex: Number,
+      groceriesIndex: Number,
+      restaurantPriceIndex: Number,
+      localPurchasePowerIndex: Number
+    },
+    lat: Number,
+    lng: Number
   },
-  lat: Number,
-  lng: Number
-}, { strict: false });
-
+  { strict: false }
+);
 
 const postModel = mongoose.model('Post', postSchema);
-
 
 let selectAll = () => {
   return new Promise((resolve, reject) => {
@@ -47,7 +55,19 @@ let selectAll = () => {
   });
 };
 
+let findOne = inputPost => {
+  return new Promise((resolve, reject) => {
+    postModel.find({ name: inputPost }, (err, res) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(res);
+      }
+    });
+  });
+};
 
 module.exports.db = db;
 module.exports.postModel = postModel;
 module.exports.selectAll = selectAll;
+module.exports.findOne = findOne;

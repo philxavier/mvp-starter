@@ -19,7 +19,7 @@ class SideBar extends Component {
     return (
       <div className="sidebar">
         <div id="sideBarText"> 
-           <h3>Filtros</h3>
+           <h3>Filters</h3>
         </div>
         <div id="categoria">
           <h4 id="categoriaTitle">Post Class</h4>

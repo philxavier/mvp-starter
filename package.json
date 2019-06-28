@@ -18,10 +18,11 @@
     "@material-ui/icons": "^3.0.2",
     "@types/lodash": "^4.14.123",
     "all-the-cities": "^2.0.1",
-    "axios": "^0.18.0",
+    "axios": "^0.19.0",
     "bootstrap": "^4.3.1",
     "cheerio": "^1.0.0-rc.3",
     "cities.json": "^1.1.5",
+    "compression": "^1.7.4",
     "faker": "^4.1.0",
     "google-map-react": "^1.1.4",
     "jquery": "^3.3.1",
@@ -30,7 +31,6 @@
     "nightmare": "^3.0.2",
     "prop-types": "^15.7.2",
     "react": "^16.3.1",
-    "react-bootstrap": "^1.0.0-beta.8",
     "react-dom": "^16.3.1",
     "react-fontawesome": "^1.6.1",
     "react-google-maps": "^9.4.5",
@@ -70,7 +70,7 @@
     "jest": "^24.8.0",
     "mongoose": "^5.1.2",
     "style-loader": "^0.23.1",
-    "webpack": "^4.20.2",
+    "webpack": "^4.35.0",
     "webpack-cli": "^3.3.0"
   }
 }

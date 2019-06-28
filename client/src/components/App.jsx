@@ -14,12 +14,17 @@ export default class App extends Component {
         type:[],
         currentRates:[]
       },
-      
+      center: {
+        lat: 59.95,
+        lng: 30.33,
+      },
+      zoom:1,
     }
 
-    this.handleSwitchClassChange = this.handleSwitchClassChange.bind(this)
+    this.handleSwitchClassChange = this.handleSwitchClassChange.bind(this);
     this.handleTypeChange=this.handleTypeChange.bind(this);
     this.handleBossRateChange=this.handleBossRateChange.bind(this);
+    this.handleSearchFromSearchBar=this.handleSearchFromSearchBar.bind(this);
   }
 
   handleSwitchClassChange(inputClassOfPost) {
@@ -71,18 +76,33 @@ export default class App extends Component {
     })
   }
 
+  handleSearchFromSearchBar(newCenter, zoom) {
+    this.setState({
+      center:newCenter,
+      zoom: zoom
+    })
+  }
+
   render() {
 
     let { currentRates, classOfPost, type } = this.state.filters;
+    let {zoom, center} = this.state
+    
     return (
       <div id="container">
-        <SearchBar />
+        <SearchBar handleSearchFromSearchBar={this.handleSearchFromSearchBar}/>
         <SideBar 
           handleSwitchClassChange={this.handleSwitchClassChange} 
           handleTypeChange={this.handleTypeChange}
           handleBossRateChange={this.handleBossRateChange}
         />
-        <SimpleMap type={type} classOfPost={classOfPost} currentRates={currentRates} />
+        <SimpleMap 
+          type={type} 
+          classOfPost={classOfPost} 
+          currentRates={currentRates} 
+          center={center}
+          zoom={zoom}
+        />
       </div>
     )
   }

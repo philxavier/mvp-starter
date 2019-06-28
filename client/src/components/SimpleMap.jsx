@@ -14,18 +14,12 @@ class SimpleMap extends Component {
     super(props) 
     this.state = {
       fullListOfPosts: [],
-      filteredListOfPosts:[]
+      filteredListOfPosts:[],
+      center: this.props.center,
+      zoom: this.props.zoom
     }
-  }
-
-  static defaultProps = {
-    center: {
-      lat: 59.95,
-      lng: 30.33,
-    },
-    zoom:1,
-
-  };
+        
+  } 
 
   componentDidMount() {
 
@@ -41,6 +35,7 @@ class SimpleMap extends Component {
       })
   }
 
+  
   componentDidUpdate(prevProps) {
     //if props are modified, lets filter the full list of posts and make into filtered list of posts so it can be rendered
     if(prevProps !== this.props) {
@@ -75,8 +70,8 @@ class SimpleMap extends Component {
 
         <GoogleMapReact
           bootstrapURLKeys={{ key: google_api.key}}
-          defaultCenter={this.props.center}
-          defaultZoom={this.props.zoom}
+          center={this.state.center}
+          zoom={this.state.zoom}
         >
 
           {this.state.filteredListOfPosts.map((ele, ind) => {

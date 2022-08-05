@@ -68,7 +68,7 @@
     "eslint-plugin-react": "^7.12.4",
     "express": "^4.16.3",
     "jest": "^24.8.0",
-    "mongoose": "^5.1.2",
+    "mongoose": "^5.7.5",
     "style-loader": "^0.23.1",
     "webpack": "^4.35.0",
     "webpack-cli": "^3.3.0"
